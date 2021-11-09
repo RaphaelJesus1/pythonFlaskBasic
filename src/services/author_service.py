@@ -18,8 +18,12 @@ def create(data):
         if not last_name:
             json_abort(400,"Last Name is required")
 
+        age = data.get('age')
+        if not age:
+            json_abort(400,"Age is required")
+
  
-        author = Author(first_name=first_name,last_name=last_name)
+        author = Author(first_name=first_name,last_name=last_name,age=age)
         db.session.add(author)
         db.session.commit()
 
@@ -62,11 +66,17 @@ def change(id, data):
             if not last_name:
                 json_abort(400,"Last Name is required")
 
+            age = data.get('age')
+            if not age:
+                json_abort(400,"Age is required")
+
 
             author.first_name = first_name
             author.last_name = last_name
+            author.age = age
             
             db.session.delete(author)
+            
             db.session.commit()
         
             return author

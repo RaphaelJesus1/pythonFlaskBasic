@@ -22,7 +22,7 @@ class AuthorCollection(Resource):
  
 
 @ns.route('/<int:id>')
-class AuthorIDCollection(Resource): 
+class AuthorIDCollection(Resource): ## AuthorIDCollection extends Resource
     @api.marshal_with(author_result)
     def get(self, id):
         """

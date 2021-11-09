@@ -18,6 +18,10 @@ def create(data):
         if not text:
             json_abort(400,"text is required")
 
+        subtitle = data.get('subtitle')
+        if not subtitle:
+            json_abort(400,"subtitle is required")
+
         author_id = data.get('author_id')
         if not author_id:
             json_abort(400,"author_id is required")
@@ -26,7 +30,7 @@ def create(data):
  
         created = datetime.datetime.now()
 
-        post = Post(text=text,created=created, author_id=author_id,author=author)
+        post = Post(text=text,subtitle=subtitle,created=created, author_id=author_id,author=author)
         db.session.add(post)
         db.session.commit()
 
@@ -64,8 +68,13 @@ def change(id, data):
             text = data.get('text')
             if not text:
                 json_abort(400,"text is required")
+
+            subtitle = data.get('subtitle')
+            if not subtitle:
+                json_abort(400,"subtitle is required")
  
-            post.text = text 
+            post.text = text
+            post.subtitle = subtitle
             
             db.session.delete(post)
             db.session.commit()
