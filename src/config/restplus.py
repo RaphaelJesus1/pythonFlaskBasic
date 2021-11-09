@@ -7,8 +7,8 @@ from src.config import settings
 
     
 #Configura nome da API e documentaçao do swagger 
-api = Api(version='1.0', title=' Post Service API',
-          description='Api de gestão de posts ' )
+api = Api(version='1.0', title=' Student Service API',
+          description='Api de gestão de estudantes ' )
     
 #formata retorno de erro
 def json_abort(status_code, message):
