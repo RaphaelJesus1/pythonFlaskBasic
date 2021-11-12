@@ -10,6 +10,7 @@ from src.models.schooltests import SchoolTests
 from src.models.student import Student
 #import blueprint controllers
 from src.api.course_controller import ns as course_namespace
+from src.api.student_controller import ns as student_namespace
 
 
    
