@@ -3,14 +3,15 @@ from flask import Flask, Blueprint
 #import configuracao
 from src.config.restplus import api,init_config
 from src.config.settings import config_by_name 
-#import databese e models
+#import database e models
 from src.models import db
 from src.models.course import Course
-from src.models.schooltests import SchoolTests
+from src.models.schooltest import SchoolTest
 from src.models.student import Student
 #import blueprint controllers
 from src.api.course_controller import ns as course_namespace
 from src.api.student_controller import ns as student_namespace
+from src.api.schooltest_controller import ns as schooltest_namespace
 
 
    
@@ -45,6 +46,7 @@ def setup_app(app):
     #adiciona namespaces to blueprint
     api.add_namespace(course_namespace)
     api.add_namespace(student_namespace) 
+    api.add_namespace(schooltest_namespace) 
 
     #registra blueprint
     app.register_blueprint(blueprint, url_prefix='')
