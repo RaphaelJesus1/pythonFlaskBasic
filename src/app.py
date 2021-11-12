@@ -5,11 +5,11 @@ from src.config.restplus import api,init_config
 from src.config.settings import config_by_name 
 #import databese e models
 from src.models import db
-from src.models.author import Author
-from src.models.post import Post
+from src.models.course import Course
+from src.models.schooltests import SchoolTests
+from src.models.student import Student
 #import blueprint controllers
-from src.api.author_controller import ns as author_namespace
-from src.api.post_controller import ns as post_namespace
+from src.api.course_controller import ns as course_namespace
 
 
    
@@ -42,8 +42,8 @@ def setup_app(app):
     #chama a funcao que vai congigurar as API
     init_config(app)
     #adiciona namespaces to blueprint
-    api.add_namespace(author_namespace)
-    api.add_namespace(post_namespace) 
+    api.add_namespace(course_namespace)
+    api.add_namespace(student_namespace) 
 
     #registra blueprint
     app.register_blueprint(blueprint, url_prefix='')
