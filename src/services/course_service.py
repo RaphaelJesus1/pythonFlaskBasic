@@ -57,7 +57,8 @@ def get(id):
 
         if not course:
             json_abort(400,"Course not found")
-            
+        
+        course.students = students    
         return course
 
     except SQLAlchemyError as err: 

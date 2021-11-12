@@ -1,7 +1,7 @@
 from flask import request
 from flask_restplus import Resource
 from src.config.restplus import api
-from src.api.serializers.course_serializer import course_request, course_result
+from src.api.serializers.course_serializer import course_request, course_result, course_students_result
 from src.services.course_service import create, change, delete, get, getCourses
  
 
@@ -32,13 +32,13 @@ class CourseCollection(Resource):
 
 @ns.route('/<int:id>')
 class CourseIDCollection(Resource): ## CourseIDCollection extends Resource
-    @api.marshal_with(course_result)
+    @api.marshal_with(course_students_result)
     def get(self, id):
         """
         Get course by ID
         """ 
         course = get(id)
-        return course 
+        return course
 
 
     @api.expect(course_request)

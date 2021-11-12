@@ -71,6 +71,7 @@ def get(id):
         if not student:
             json_abort(400,"Student not found")
 
+        student.schooltests = school_tests
         return student
 
     except SQLAlchemyError as err: 

@@ -1,7 +1,7 @@
 from flask import request
 from flask_restplus import Resource
 from src.config.restplus import api
-from src.api.serializers.student_serializer import student_request, student_result
+from src.api.serializers.student_serializer import student_request, student_result, student_schooltests_result
 from src.services.student_service import create, change, delete, get, getStudents
  
 
@@ -31,7 +31,7 @@ class StudentCollection(Resource):
 
 @ns.route('/<int:id>')
 class StudentIDCollection(Resource): 
-    @api.marshal_with(student_result)
+    @api.marshal_with(student_schooltests_result)
     def get(self, id):
         """
         Get student by ID
